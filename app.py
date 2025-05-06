@@ -4,7 +4,7 @@ import time
 
 # 初始化 Day 狀態
 if "day" not in st.session_state:
-    st.session_state.day = 0
+    st.session_state.day = 1
 if "last_choice" not in st.session_state:
     st.session_state.last_choice = None
 
@@ -45,5 +45,8 @@ if st.button("送出回覆"):
         她說：「看你。」  
         🌀 你們看著彼此
         """)
-        time.sleep(5)
+        countdown = st.empty()
+        for i in range(5, 0, -1):
+            countdown.markdown(f"**{i}...**")
+            time.sleep(1)
         st.rerun()
