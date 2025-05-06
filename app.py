@@ -11,6 +11,8 @@ if "reset_choice" not in st.session_state:
     st.session_state.reset_choice = False
 if "zhinan_index" not in st.session_state:
     st.session_state.zhinan_index = 0
+if "suile_count" not in st.session_state:
+    st.session_state.suile_count = 0
 
 st.set_page_config(page_title="戀愛存亡選擇", page_icon="💬")
 st.title("My Happy Day")
@@ -23,6 +25,9 @@ if st.session_state.reset_choice:
 # 顯示狀態
 st.markdown(f"### 📆 Day {st.session_state.day}")
 st.markdown("女朋友問：**「要不要去找你？」**")
+if st.session_state.suile_count > 0:
+    for _ in range(st.session_state.suile_count):
+        st.markdown("女朋友問：**「所以勒？」**")
 
 # 顯示直男指數
 st.progress(st.session_state.zhinan_index / 100)
@@ -64,6 +69,7 @@ if st.button("送出回覆"):
         st.rerun()
 
     elif choice == "看你啊":
+        st.session_state.suile_count += 1
         st.markdown("""
         她說：「看你。」  
         🌀 你們看著彼此
