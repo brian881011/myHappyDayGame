@@ -9,7 +9,7 @@ if "last_choice" not in st.session_state:
     st.session_state.last_choice = None
 
 st.set_page_config(page_title="戀愛存亡選擇", page_icon="💬")
-st.title("💬 戀愛存亡選擇遊戲")
+st.title("My Happy Day")
 
 # 回到選項畫面
 st.markdown(f"### 📆 Day {st.session_state.day}")
@@ -24,10 +24,10 @@ choice = st.radio("你要怎麼回應？", [
 
 if st.button("送出回覆"):
     st.session_state.last_choice = choice
-    if choice == "你來找我":
+    if choice == "好，來找我":
         st.markdown("""
         她來了。  
-        她說：「你都沒有好好對待我，我常常都很累或不順路但我還是會去找你啊。」  
+        她說：「你都沒有好好對待我，我常常都很累或不順路但我還是會去找你。」  
         😡 **Bad End：女友生氣**
         """)
         st.session_state.day += 1
@@ -43,8 +43,7 @@ if st.button("送出回覆"):
     elif choice == "看你啊":
         st.markdown("""
         她說：「看你。」  
-        🌀 你們互看了五秒鐘……什麼也沒發生。  
-        🔁 **回到選項畫面中...**
+        🌀 你們看著彼此
         """)
         time.sleep(5)
         st.rerun()
