@@ -13,7 +13,7 @@ st.title("My Happy Day")
 
 # 回到選項畫面
 st.markdown(f"### 📆 Day {st.session_state.day}")
-st.markdown("女朋友問：**「要不要來找我？」**")
+st.markdown("女朋友問：**「要不要去找你？」**")
 
 # 選項按鈕
 choice = st.radio("你要怎麼回應？", [
