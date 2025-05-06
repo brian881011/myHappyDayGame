@@ -20,7 +20,7 @@ choice = st.radio("你要怎麼回應？", [
     "好，來找我",
     "看你啊，會累或太麻煩也不用勉強沒關係",
     "看你啊"
-])
+], key=f"choice_{st.session_state.day}")
 
 if st.button("送出回覆"):
     st.session_state.last_choice = choice
