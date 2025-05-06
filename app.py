@@ -1,12 +1,17 @@
 # app.py
 import streamlit as st
+import time
 
 # 初始化 Day 狀態
 if "day" not in st.session_state:
     st.session_state.day = 0
+if "last_choice" not in st.session_state:
+    st.session_state.last_choice = None
 
 st.set_page_config(page_title="戀愛存亡選擇", page_icon="💬")
 st.title("💬 戀愛存亡選擇遊戲")
+
+# 回到選項畫面
 st.markdown(f"### 📆 Day {st.session_state.day}")
 st.markdown("女朋友問：**「要不要來找我？」**")
 
@@ -18,6 +23,7 @@ choice = st.radio("你要怎麼回應？", [
 ])
 
 if st.button("送出回覆"):
+    st.session_state.last_choice = choice
     if choice == "你來找我":
         st.markdown("""
         她來了。  
@@ -38,7 +44,7 @@ if st.button("送出回覆"):
         st.markdown("""
         她說：「看你。」  
         🌀 你們互看了五秒鐘……什麼也沒發生。  
-        🔁 **回到選項畫面**
+        🔁 **回到選項畫面中...**
         """)
-
-    st.button("👉 繼續下一天", on_click=lambda: None)
+        time.sleep(5)
+        st.rerun()
